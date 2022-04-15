@@ -1,0 +1,26 @@
+@api = http://localhost:4000
+
+GET {{api}}/videos
+
+### create video
+POST {{api}}/videos
+Content-Type: application/json
+
+{
+  "title": "Qué es un NFT",
+  "url": "https://www.youtube.com/watch?v=0KrdRZVr-q4"
+}
+
+### GET VIDEO
+GET {{api}}/videos/6258811a1790732b0cf2b2c8
+
+### DELETE VIDEO
+DELETE {{api}}/videos/6258a9e78dfd5f46f82a0a4c
+
+### UPDATE
+PUT {{api}}/videos/6258aa31051e7e4df0a2dd2b
+Content-Type: application/json
+
+{
+  "description": "un invento más nada útil, sólo para ambiciosos sedientos de dinero"
+}
