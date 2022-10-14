@@ -1,6 +1,7 @@
 import { Router } from "express";
-import * as videosCtrl from "./videos.controller";
 const router = Router();
+
+import * as videosCtrl from "./videos.controller";
 
 router.get("/videos", videosCtrl.getVideos);
 

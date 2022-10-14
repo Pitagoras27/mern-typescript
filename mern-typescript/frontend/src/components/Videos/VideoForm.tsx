@@ -39,6 +39,7 @@ const VideoForm = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!params.id) {
+      console.log('in handleSubmit!', params.id)
       await videoService.createNewVideo(video);
       setVideo(initialState);
       toast.success("New Video Added");
@@ -92,7 +93,7 @@ const VideoForm = () => {
               {params.id ? (
                 <button className="btn btn-info">Update</button>
               ) : (
-                <button className="btn btn-primary">Create</button>
+                <button type="submit" className="btn btn-primary">Create</button>
               )}
             </form>
           </div>

@@ -2,13 +2,18 @@ import { RequestHandler, Response } from "express";
 import Video from "./Video";
 
 export const createVideo: RequestHandler = async (req, res) => {
-  const videoFound = await Video.findOne({ url: req.body.url });
-  if (videoFound)
-    return res.status(303).json({ message: "the url already exists" });
+  try {
+    const videoFound = await Video.findOne({ url: req.body.url });
+    if (videoFound)
+      return res.status(303).json({ message: "the url already exists!" });
 
-  const newVideo = new Video(req.body);
-  const savedVideo = await newVideo.save();
-  res.json(savedVideo);
+    const newVideo = new Video(req.body);
+    const savedVideo = await newVideo.save();
+    res.status(201).json(savedVideo);
+  } catch (err) {
+    console.log("error---->", err);
+    res.status(500).json({ message: "Server error" });
+  }
 };
 
 export const getVideos: RequestHandler = async (req, res) => {

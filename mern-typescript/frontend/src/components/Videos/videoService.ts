@@ -1,12 +1,11 @@
 import axios from "axios";
 import { Video } from "./Video";
 
-const API = process.env.REACT_APP_API;
+// const API = process.env.REACT_APP_API;
+const API = "http://localhost:4000";
 
 export const getVideos = async () => {
   return await axios.get<Video[]>(`${API}/videos`);
-
-  // return await axios.get<Video[]>(`${API}/videos`);
 };
 
 export const getVideoById = async (id: string) => {
@@ -14,6 +13,7 @@ export const getVideoById = async (id: string) => {
 };
 
 export const createNewVideo = async (video: Video) => {
+  console.log(API);
   return await axios.post(`${API}/videos`, video);
 };
 
